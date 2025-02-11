@@ -1,0 +1,35 @@
+{
+  "name": "supabase-backup",
+  "version": "1.0.0",
+  "description": "Comprehensive Supabase backup and restore utility",
+  "main": "src/backup.js",
+  "type": "module",
+  "scripts": {
+    "backup": "PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH node src/backup.js",
+    "restore": "PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH node src/restore.js",
+    "backup:db": "PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH node src/backup.js --db-only",
+    "backup:storage": "PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH node src/backup.js --storage-only",
+    "backup:config": "PATH=/opt/homebrew/opt/postgresql@15/bin:$PATH node src/backup.js --config-only",
+    "verify": "node src/verify.js",
+    "setup": "bash scripts/setup.sh",
+    "test": "npm run test:structure && npm run test:functional",
+    "test:structure": "bash tests/test-reorganization.sh",
+    "test:functional": "node tests/test-backup-functionality.js",
+    "test:integration": "node tests/integration-test.js",
+    "test:all": "npm run test && npm run test:integration"
+  },
+  "keywords": [
+    "supabase",
+    "backup",
+    "postgresql",
+    "database"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
+    "dotenv": "^16.4.1",
+    "pg": "^8.11.3"
+  },
+  "devDependencies": {}
+}
